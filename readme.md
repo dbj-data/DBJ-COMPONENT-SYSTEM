@@ -2,7 +2,17 @@
 ![ ](unsplash/work_in_progres_raw.jpg)
 <center> <b>Caveat Emptor! Work in Progress</b> </center>
 
-![unsplash](unsplash/manuel.jpg)
+## Transitioning to OS agnostic DBJ Components
+
+>[!NOTE]
+- Untill we say otherwise we are in the "transition period" 
+- Go to subfolder A: it cintain the canonical component A
+- First we need to cut the dependancy on dbj_capi 
+- we will do that by moving the required to the `/common` folder in here
+- Ignore the rest
+---
+
+# Content until 2025-12-14
 
 > In IT systems in general, the programming language is not of primary importance. Architecture is.
 >
@@ -26,30 +36,27 @@ If some "feature" is missing we can always pull the card of simplicity as an exc
 ## How is this working?
 
 ### Important note
-```
-NOTE:
 
-A module-definition or DEF file (*.def) is a text file containing one or more 
-module statements that describe various attributes of a DLL. 
-If you are not using the __declspec(dllexport) keyword to export the DLL's functions, 
+>[!NOTE]
+> A module-definition or DEF file (*.def) is a text file containing one or more module statements that describe various attributes of a DLL. 
+> If you are not using the __declspec(dllexport) keyword to export the DLL's functions, 
 the DLL requires a DEF file.
 
-DITTO: 
+>[!TIP] Win32 C compilers will hapilly build dll without def files.
 
-Visual Studio will hapilly build dll without a def files.
-
-YOU MUST!
-
-Create the DEF file yourself and add it to your project. Then go to Project >
-Properties > Linker > Input > Module Definition File and enter the name of the
+>[!CAUTION]YOU MUST!
+Create the DEF file yourself and add it to your project. In Visual Studio (pre 2026 )go to `Project >
+Properties > Linker > Input > Module Definition File` and enter the name of the
 DEF file. Repeat this step for each configuration and platform, or do it all at
 once by selecting Configuration = All Configurations, and Platform = All
 Platforms.
-```
+
+For rach component project 
 
 - one DBJ Component is one DLL
 - one component has one C struct that represents an interface with one implementation
-- All DBJ Components (DLLs) have the same def file. 
+- one DEf file
+  - All DBJ Components (DLLs) have the same DEF file. 
   - This is it
 ```
 EXPORTS
@@ -57,7 +64,7 @@ dbj_component_can_unload_now      PRIVATE
 interface_factory                 PRIVATE
 dbj_component_version             PRIVATE
 ```
-- thus each DBJ Component exports all of the three functions above
+- thus each DBJ Component exports the three functions above
   - there are no other functions exported. Ever. 
   - no 'dll export' and no 'dll import' is necessary
   - no lib to use dll is necessary
@@ -126,7 +133,7 @@ if (function_)
 // Windows keeps it in a memory for a while
 dbjcs_dll_unload();
 ```
-Example: On the struct interface of the `component_a.dll` declared is a function `get42` . The struct interface is declared like this:
+**Example**: On the struct interface of the `component_a.dll` declared is a function `get42` . The struct interface is declared like this:
 ```cpp
 // component_a.h
 struct component_a
@@ -174,12 +181,14 @@ DBJCS_CALL(
 - If using anything from Windows for components do not go above `rpc.h` 
 
 ## The History 
+
+> History matters
   - First came OLE
     - OLE was invented for MS Office integration
   - COM and OLE are two separate "things"
     - COM was also first used just in Office
   - COM 1.0 was released 1993 
-    - The period when OOA/OOD/OOP where thought to be the "Final Solution"
+    - The period when OOA/OOD/OOP where considered as be the "Final Solution"
   - COM is based on MSRPC
     - MSRPC is the DEC IPC implementation
     - The very foundation of Windows NT
@@ -190,6 +199,9 @@ DBJCS_CALL(
 
 ---
 
-&copy; 2021 by dbj@dbj.org
+&copy; 2021-2026 by dbj@dbj.org
 
 https://dbj.org/license_dbj 
+
+
+![unsplash](unsplash/manuel.jpg)

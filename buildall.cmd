@@ -3,8 +3,16 @@
 
 setlocal
 
-@rem Setup VS2019
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+@rem  from 2025-12-14 we use GCC (MinGW) on Windows
+@rem  dowmloaded from winlibs.com
+@rem  GCC is (almost) OS agnostic conpiler 
+@rem  just be sure gcc is on the path
+@rem  on windows (and on my machine) that is g:/mingw64/bin folder
+@rem  we try and use os agnostic make
+@rem  on Linux we use make on windows
+@rem  Yes: mingw32-make.exe is GNU Make.
+@rem  No: it does not behave exactly like GNU Make on Linux unless the surrounding environment matches.
+@rem  we deliberately avoid CMake (this time)
 
 
 pushd .
