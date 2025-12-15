@@ -1,6 +1,9 @@
 #ifndef DBJ_STRING_INCLUDED
 #define DBJ_STRING_INCLUDED
 
+#include <stddef.h> // size_t
+#include <string.h> // strnlen
+
 // officialy not until C23
 #if __STDC_VERSION__ <= 201710L
 // _memccpy in MSVC
@@ -21,7 +24,9 @@ static inline struct Book *book_populate(struct Book *bptr_,
 
 that memccpy above is much faster then snprintf(bptr_->name, 0xFF, "%s", new_name_ );
 */
-static inline void *dbj_memccpy(void * /*restrict*/ dst, const void * /*restrict*/ src, int c, size_t n)
+void *dbj_memccpy(void * /*restrict*/ dst, const void * /*restrict*/ src, int c, size_t n);
+
+void *dbj_memccpy(void * /*restrict*/ dst, const void * /*restrict*/ src, int c, size_t n)
 {
     const char *s = src;
     for (char *ret = dst; n; ++ret, ++s, --n)
@@ -32,27 +37,29 @@ static inline void *dbj_memccpy(void * /*restrict*/ dst, const void * /*restrict
     }
     return 0;
 }
-#endif
+#else
+#include <string.h>
+#define dbj_memccpy memccpy
+#endif // __STDC_VERSION__
 
 /*
-   dbj capi string is an char array in a struct, for example
+   DBJ string is a char array wrapped in a struct:
 
    struct { char data[0xFF]; } str1 = {""};
 
-   if size is runtime value the resulting instance can not be initialized
+   Compile-time size (constant) allows initialization:
+      struct { char data[0xFF]; } str1 = {""}; // OK - compiles
 
-   int j = 0xFF ;
-   struct { char data[j]; } str1 = {""}; // does not compile
-   struct { char data[j]; } str1 ; // does compile
+   Runtime size (VLA) prohibits initialization:
+      int j = 0xFF;
+      struct { char data[j]; } str1 = {""}; // ERROR - does not compile
+      struct { char data[j]; } str1;        // OK - uninitialized
 
-   this is static thus free-ing is not required
-   this can be sent into and out of functions and dbj components,
-   C runtime will do very fast copy elision in any case
+   Stack-based allocation means no malloc/free required.
+   Can be passed to/from functions and DBJ components efficiently.
+   C runtime performs fast copy elision automatically.
 
-   obviously wchar_t variant can and will be added as soon as it is required
-   same is for utf-8, utf-16 and utf-32
-
-   Godbolt quick test: https://godbolt.org/z/4sjT7bY7n
+   Wide character variants (wchar_t, UTF-8, UTF-16, UTF-32) will be added when needed.
 */
 
 #undef DBJ_EXTERN_C_BEGIN
@@ -70,9 +77,6 @@ static inline void *dbj_memccpy(void * /*restrict*/ dst, const void * /*restrict
 
 DBJ_EXTERN_C_BEGIN
 
-#undef DBJ_COUNT_OF
-#define DBJ_COUNT_OF(x) ((sizeof(x) / sizeof(0 [x])) / ((size_t)(!(sizeof(x) % sizeof(0 [x])))))
-
 #undef DBJ_STRING_TYPE
 #define DBJ_STRING_TYPE(SIZE_) \
     struct dbj_string_##SIZE_  \
@@ -80,8 +84,11 @@ DBJ_EXTERN_C_BEGIN
         char data[SIZE_];      \
     }
 
-// type names defined like that can clash and will clash
-// thus we will define few probably most common
+// DBJ String names predefined like this can clash and will clash
+// in larger projects with other libraries that define similar constructs
+// thus we will define here few probably most common
+// this will make users use these as commion names
+// and avoid name clashes
 typedef DBJ_STRING_TYPE(1024) dbj_string_1024;
 typedef DBJ_STRING_TYPE(512) dbj_string_512;
 typedef DBJ_STRING_TYPE(256) dbj_string_256;
@@ -92,15 +99,14 @@ typedef DBJ_STRING_TYPE(16) dbj_string_16;
 typedef DBJ_STRING_TYPE(8) dbj_string_8;
 
 /*
-this is dbj string variable declaration anonymous struct used thus no name clashes
 
 static const DBJ_STRING( str_global, 123 ) = {{"static const global dbj string"}};
 
     printf("%s", str_global.data );
 
-    there is no need for a size function, inside is just an array with known size:
+    there is no need for a capacity function, inside is just an array with known size:
 
-    printf("%zu", sizeof str_global.data );
+    printf("Capacity: %zu", sizeof str_global.data );
 
 */
 #undef DBJ_STRING
@@ -112,30 +118,31 @@ static const DBJ_STRING( str_global, 123 ) = {{"static const global dbj string"}
 
 #undef DBJ_STRING_SIZE
 
-// Q: why don't we use sizeof( STR_.data ) bellow?
-// A: because that is data size not string size
-//    string size is defined with '\0' (EOS) it will and can be
-//    smaller than sizeof data , ditto size of data
-//    is (available) capacity.
-#define DBJ_STRING_SIZE(STR_) DBJ_COUNT_OF(STR_.data)
+// returns the actual string length (number of characters before null terminator)
+// up to the capacity of the dbj string
+// thus safe and fast use of strnlen
+#define DBJ_STRING_SIZE(STR_) strnlen(STR_.data, sizeof(STR_.data))
 
 #undef DBJ_STRING_CAPACITY
 #define DBJ_STRING_CAPACITY(STR_) sizeof(STR_.data)
 
-#undef DBJ_STRING_ASSIGN
+#undef DBJ_STR_REUSE
 
-// consider this macro name as the guidance
-// this does not work if target or is not zero terminated
+// consider this macro name as the warning
+// it reuses the target dbj string instance
+// this does not work if target is const or is not zero terminated
 // S_ is string literal
-#define DBJ_STRING_ASSIGN(STR_, S_)                             \
-    do                                                          \
-    {                                                           \
-        dbj_memccp(STR_.data, S_, '\0', sizeof(STR_.data) - 1); \
+// thus consider this for assignment only
+#define DBJ_STR_REUSE(STR_, S_)                                  \
+    do                                                           \
+    {                                                            \
+        dbj_memccpy(STR_.data, S_, '\0', sizeof(STR_.data) - 1); \
     } while (0)
 
-//  is important
+// Following is important
+// "field" is datababase concept
 // Any field can be in 3 states: exist, does not exist and exist but **empty**
-// In databases field is always there but can be empty too
+// In databases field is "always there" and can be empty or not
 // we define as empty an dbj string the one that has '\0' as the first char
 //
 

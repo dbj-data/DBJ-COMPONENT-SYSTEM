@@ -5,16 +5,16 @@
 /* (c) 2019 - 2021 by dbj.org   -- https://dbj.org/license_dbj
 
 DBJCS == DBJ Component System
-		
+
 Here is dynamic dll loading and fetching a function from the said dll.
 This file is easy to understand if you start from the two macros at the bottom:
 
 DBJCS_CALL(dll_name_, RFP, callback_)
 
-DBJCS_ANY_CALL(dll_name_, function_name, RFP, callback_) 
+DBJCS_ANY_CALL(dll_name_, function_name, RFP, callback_)
 
 
-#define DBJCS_DLL_CALLER_IMPLEMENTATION  in exactly one place 
+#define DBJCS_DLL_CALLER_IMPLEMENTATION  in exactly one place
 */
 #include <dbj_capi/dbj_lock_unlock.h>
 
@@ -36,7 +36,7 @@ DBJCS_ANY_CALL(dll_name_, function_name, RFP, callback_)
 #include <stdio.h>
 
 DBJ_EXTERN_C_BEGIN
-/* 
+/*
 user can provide the actual log function for this loader, the required signature is
 extern "C" void (*user_log_FP) (const char* file, long line, const char* , ...);
 otherwise we will use dbj_capi default loader, based on a stderr redirection to file
@@ -57,11 +57,11 @@ dbjcs_loader_state dbjloader_dll_unload(dbjcs_loader_state state);
  */
 typedef struct dbjcs_loader_state
 {
-	/* 
+	/*
 	dll_name_ is the HT key
 	DLL name should be just a "base file name.dll"
 	we do not want users to load the dll's from wherever on the machine
-	that is not going to work properly and is very unsafe 
+	that is not going to work properly and is very unsafe
 	*/
 	dbj_string_128 key;
 	HINSTANCE dll_handle_;
@@ -78,7 +78,7 @@ dbjcs_loader_state dbjloader_new_state_struct_(void)
 /* here is the hash table to hold state descriptors    */
 static struct dbjcs_loader_state *state_descriptors_hash = 0;
 
-/* 
+/*
 unload all the dll's on app exit
 */
 __attribute__((destructor)) void dbj_loader_descriptors_hash_destructor(void)
@@ -146,18 +146,18 @@ int dbjcs_assign_dll_name(dbjcs_loader_state *state, dbj_string_128 name_)
 }
 
 /*
-We *no longer* manage just a single DLL load 
+We *no longer* manage just a single DLL load
 */
 dbjcs_loader_state dbjloader_load(
-	/* 
-	remember just a file name, not a path! 
+	/*
+	remember just a file name, not a path!
 	adversary might insert unwanted dll from an unwanted location
 	*/
 	const char dll_file_name_[static 1])
 {
 	dbjcs_loader_state state;
 	dbj_string_128 key_arg_;
-	DBJ_STRING_ASSIGN(key_arg_, dll_file_name_);
+	DBJ_STR_REUSE(key_arg_, dll_file_name_);
 	// first try the HT of already loaded dll's
 	state = dbj_loader_find_in_hash(key_arg_);
 
@@ -171,8 +171,8 @@ dbjcs_loader_state dbjloader_load(
 	dbjcs_assign_dll_name(&state, key_arg_);
 	/*
 this is precisely a reason we do want DLL's as full paths
-we shall do the compliant solution by refusing to load a library unless it is located precisely 
-where expected. Thus we reduce the chance of executing attackers planted DLL, 
+we shall do the compliant solution by refusing to load a library unless it is located precisely
+where expected. Thus we reduce the chance of executing attackers planted DLL,
 when dynamically loading libraries.
 */
 	state.dll_handle_ = LoadLibraryExA(

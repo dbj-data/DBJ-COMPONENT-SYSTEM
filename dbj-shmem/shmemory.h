@@ -28,7 +28,7 @@ static inline struct dbj_shmem_descriptor dbj_shmem_descriptor_new(
         .block_size = new_size,
         .pointer_to_shared_memory = 0,
         .handle_to_file_mapping = 0};
-    DBJ_STRING_ASSIGN(rezult.key, new_name);
+    DBJ_STR_REUSE(rezult.key, new_name);
     return rezult;
 }
 

@@ -22,7 +22,7 @@ static dbj_string_1024 connection_string_(
     if (!self_)
         return retval;
 
-    DBJ_STRING_ASSIGN(retval, "server=localhost;user=root;pasword=qwqwqwqw123;");
+    DBJ_STR_REUSE(retval, "server=localhost;user=root;pasword=qwqwqwqw123;");
 
     return retval;
 }

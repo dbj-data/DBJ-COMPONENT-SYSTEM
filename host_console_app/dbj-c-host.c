@@ -38,7 +38,7 @@ static inline void shmem_component_user(component_shmem_factory_fp factory)
 {
   struct component_shmem *implementation = factory();
   dbj_shmem_key_type key;
-  DBJ_STRING_ASSIGN(key, "key_one");
+  DBJ_STR_REUSE(key, "key_one");
 
   DBJ_VERIFY(implementation->create(implementation, key, sizeof(int)));
   int fty2 = 42;
@@ -51,7 +51,7 @@ static inline void shmem_component_user(component_shmem_factory_fp factory)
   // #pragma clang diagnostic ignored "-Wtautological-constant-out-of-range-compare"
   DBJ_VERIFY(*ptr == 42);
   // #pragma clang diagnostic pop
-  DBJ_VERIFY(implementation->delete (implementation, key));
+  DBJ_VERIFY(implementation->delete(implementation, key));
 }
 /* ----------------------------------------------------------------------------------------------- */
 // this is a callback, after its done DLL is unloaded

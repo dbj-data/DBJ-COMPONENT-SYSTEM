@@ -47,7 +47,7 @@ static inline void component_b_user(component_shmem_factory_fp factory)
 
 // name of the shmem block
   dbj_string_64 key;
-  DBJ_STRING_ASSIGN(key, "key_one");
+  DBJ_STR_REUSE(key, "key_one");
 
 // create shmem to store a single int
   DBJ_VERIFY(implementation->create(implementation, key, sizeof(int)));
