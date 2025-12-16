@@ -19,7 +19,7 @@ dbj_string_16 driver(dbj_string_32 from)
 }
 
 /*
-NOTE: After this function,
+NOTE: After this functio
 stack level will be back where it was
 Heap is not touched + there is no leak.
 */

@@ -1,0 +1,433 @@
+<svg width="1920" height="900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="900" fill="white"/>
+  
+  <defs>
+    <style>
+      .key { stroke: black; stroke-width: 2; }
+      .orange { fill: #ff9933; }
+      .yellow { fill: #ffff66; }
+      .green { fill: #99cc66; }
+      .red { fill: #ff6666; }
+      .blue { fill: #6699ff; }
+      .grey { fill: #cccccc; }
+      .text-main { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; }
+      .text-sub { font-family: Arial, sans-serif; font-size: 16px; }
+      .text-small { font-family: Arial, sans-serif; font-size: 14px; }
+    </style>
+  </defs>
+  
+  <!-- Row 1 -->
+  <g transform="translate(50, 50)">
+    <rect class="key orange" x="0" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="20" y="35" fill="black">!</text>
+    <text class="text-sub" x="20" y="65" fill="black">external filter</text>
+    
+    <rect class="key yellow" x="170" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="190" y="35" fill="black">@</text>
+    <text class="text-sub" x="190" y="65" fill="black">play macro</text>
+    
+    <rect class="key green" x="340" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="360" y="35" fill="black">#</text>
+    <text class="text-sub" x="360" y="65" fill="black">prev ident</text>
+    
+    <rect class="key green" x="510" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="530" y="35" fill="black">$</text>
+    <text class="text-sub" x="530" y="65" fill="black">eol</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="700" y="35" fill="black">%</text>
+    <text class="text-sub" x="700" y="65" fill="black">goto match</text>
+    
+    <rect class="key green" x="850" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="870" y="35" fill="black">^</text>
+    <text class="text-sub" x="870" y="65" fill="black">soft bol</text>
+    
+    <rect class="key green" x="1020" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="1040" y="35" fill="black">&amp;</text>
+    <text class="text-sub" x="1040" y="65" fill="black">repeat :s</text>
+    
+    <rect class="key green" x="1190" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="1210" y="35" fill="black">*</text>
+    <text class="text-sub" x="1210" y="65" fill="black">next ident</text>
+    
+    <rect class="key green" x="1360" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="1380" y="35" fill="black">(</text>
+    <text class="text-sub" x="1380" y="55" fill="black">begin</text>
+    <text class="text-sub" x="1380" y="75" fill="black">sentence</text>
+    
+    <rect class="key green" x="1530" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="1550" y="35" fill="black">)</text>
+    <text class="text-sub" x="1550" y="55" fill="black">end</text>
+    <text class="text-sub" x="1550" y="75" fill="black">sentence</text>
+    
+    <rect class="key green" x="1700" y="0" width="160" height="80" rx="8"/>
+    <text class="text-main" x="1720" y="35" fill="black">_</text>
+    <text class="text-sub" x="1720" y="55" fill="black">soft</text>
+    <text class="text-sub" x="1720" y="75" fill="black">down</text>
+  </g>
+  
+  <!-- Number Row -->
+  <g transform="translate(50, 140)">
+    <rect class="key grey" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="70" y="40" fill="black">1</text>
+    
+    <rect class="key grey" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="240" y="40" fill="black">2</text>
+    
+    <rect class="key grey" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="410" y="40" fill="black">3</text>
+    
+    <rect class="key grey" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="580" y="40" fill="black">4</text>
+    
+    <rect class="key grey" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="750" y="40" fill="black">5</text>
+    
+    <rect class="key grey" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="920" y="40" fill="black">6</text>
+    
+    <rect class="key grey" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1090" y="40" fill="black">7</text>
+    
+    <rect class="key grey" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1260" y="40" fill="black">8</text>
+    
+    <rect class="key grey" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1430" y="40" fill="black">9</text>
+    
+    <rect class="key green" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">0</text>
+    <text class="text-sub" x="1550" y="50" fill="black">"hard" bol</text>
+    
+    <rect class="key green" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">-</text>
+    <text class="text-sub" x="1720" y="50" fill="black">prev line</text>
+  </g>
+  
+  <!-- QWERTY Upper -->
+  <g transform="translate(50, 220)">
+    <rect class="key yellow" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">Q</text>
+    <text class="text-sub" x="20" y="50" fill="black">ex mode</text>
+    
+    <rect class="key green" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">W</text>
+    <text class="text-sub" x="190" y="50" fill="black">next Word</text>
+    
+    <rect class="key green" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">E</text>
+    <text class="text-sub" x="360" y="50" fill="black">end Word</text>
+    
+    <rect class="key red" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">R</text>
+    <text class="text-sub" x="530" y="50" fill="black">repl. mode</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">T</text>
+    <text class="text-sub" x="700" y="50" fill="black">back 'til</text>
+    
+    <rect class="key orange" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">Y</text>
+    <text class="text-sub" x="870" y="50" fill="black">yank line</text>
+    
+    <rect class="key orange" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">U</text>
+    <text class="text-sub" x="1040" y="50" fill="black">undo line</text>
+    
+    <rect class="key orange" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">I</text>
+    <text class="text-sub" x="1210" y="50" fill="black">insert at bol</text>
+    
+    <rect class="key orange" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">O</text>
+    <text class="text-sub" x="1380" y="50" fill="black">open above</text>
+    
+    <rect class="key orange" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">P</text>
+    <text class="text-sub" x="1550" y="50" fill="black">paste before</text>
+    
+    <rect class="key green" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">+</text>
+    <text class="text-sub" x="1720" y="50" fill="black">next line</text>
+  </g>
+  
+  <!-- QWERTY Lower -->
+  <g transform="translate(50, 290)">
+    <rect class="key yellow" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">q</text>
+    <text class="text-sub" x="20" y="50" fill="black">record macro</text>
+    
+    <rect class="key green" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">w</text>
+    <text class="text-sub" x="190" y="50" fill="black">next word</text>
+    
+    <rect class="key green" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">e</text>
+    <text class="text-sub" x="360" y="50" fill="black">end word</text>
+    
+    <rect class="key red" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">r</text>
+    <text class="text-sub" x="530" y="50" fill="black">repl. char</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">t</text>
+    <text class="text-sub" x="700" y="50" fill="black">'til</text>
+    
+    <rect class="key orange" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">y</text>
+    <text class="text-sub" x="870" y="50" fill="black">yank</text>
+    
+    <rect class="key orange" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">u</text>
+    <text class="text-sub" x="1040" y="50" fill="black">undo</text>
+    
+    <rect class="key orange" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">i</text>
+    <text class="text-sub" x="1210" y="50" fill="black">insert mode</text>
+    
+    <rect class="key orange" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">o</text>
+    <text class="text-sub" x="1380" y="50" fill="black">open below</text>
+    
+    <rect class="key orange" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">p</text>
+    <text class="text-sub" x="1550" y="50" fill="black">paste after</text>
+    
+    <rect class="key orange" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">=</text>
+    <text class="text-sub" x="1720" y="50" fill="black">auto format</text>
+  </g>
+  
+  <!-- ASDF Upper -->
+  <g transform="translate(50, 370)">
+    <rect class="key red" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">A</text>
+    <text class="text-sub" x="20" y="50" fill="black">append at eol</text>
+    
+    <rect class="key orange" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">S</text>
+    <text class="text-sub" x="190" y="50" fill="black">subst line</text>
+    
+    <rect class="key yellow" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">D</text>
+    <text class="text-sub" x="360" y="50" fill="black">delete to eol</text>
+    
+    <rect class="key green" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">F</text>
+    <text class="text-sub" x="530" y="50" fill="black">back find ch</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">G</text>
+    <text class="text-sub" x="700" y="50" fill="black">go/goto ln</text>
+    
+    <rect class="key green" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">H</text>
+    <text class="text-sub" x="870" y="50" fill="black">screen top</text>
+    
+    <rect class="key green" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">J</text>
+    <text class="text-sub" x="1040" y="50" fill="black">join lines</text>
+    
+    <rect class="key yellow" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">K</text>
+    <text class="text-sub" x="1210" y="50" fill="black">help</text>
+    
+    <rect class="key green" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">L</text>
+    <text class="text-sub" x="1380" y="50" fill="black">screen bottom</text>
+    
+    <rect class="key yellow" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">:</text>
+    <text class="text-sub" x="1550" y="50" fill="black">ex cmd line</text>
+    
+    <rect class="key yellow" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">"</text>
+    <text class="text-sub" x="1720" y="50" fill="black">reg. 1 spec</text>
+  </g>
+  
+  <!-- ASDF Lower -->
+  <g transform="translate(50, 440)">
+    <rect class="key red" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">a</text>
+    <text class="text-sub" x="20" y="50" fill="black">append</text>
+    
+    <rect class="key orange" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">s</text>
+    <text class="text-sub" x="190" y="50" fill="black">subst char</text>
+    
+    <rect class="key yellow" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">d</text>
+    <text class="text-sub" x="360" y="50" fill="black">delete</text>
+    
+    <rect class="key green" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">f</text>
+    <text class="text-sub" x="530" y="50" fill="black">find char</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">g</text>
+    <text class="text-sub" x="700" y="50" fill="black">extra cmds</text>
+    
+    <rect class="key green" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">h</text>
+    <text class="text-sub" x="870" y="50" fill="black">←</text>
+    
+    <rect class="key green" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">j</text>
+    <text class="text-sub" x="1040" y="50" fill="black">↓</text>
+    
+    <rect class="key green" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">k</text>
+    <text class="text-sub" x="1210" y="50" fill="black">↑</text>
+    
+    <rect class="key green" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">l</text>
+    <text class="text-sub" x="1380" y="50" fill="black">→</text>
+    
+    <rect class="key green" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">;</text>
+    <text class="text-sub" x="1550" y="50" fill="black">repeat f/t/F/T</text>
+    
+    <rect class="key green" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">'</text>
+    <text class="text-sub" x="1720" y="50" fill="black">goto mk. bol</text>
+  </g>
+  
+  <!-- ZXCV Upper -->
+  <g transform="translate(50, 520)">
+    <rect class="key red" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">Z</text>
+    <text class="text-sub" x="20" y="50" fill="black">quit</text>
+    
+    <rect class="key yellow" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">X</text>
+    <text class="text-sub" x="190" y="50" fill="black">backspace</text>
+    
+    <rect class="key orange" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">C</text>
+    <text class="text-sub" x="360" y="50" fill="black">change to eol</text>
+    
+    <rect class="key blue" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">V</text>
+    <text class="text-sub" x="530" y="50" fill="black">visual lines</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">B</text>
+    <text class="text-sub" x="700" y="50" fill="black">prev Word</text>
+    
+    <rect class="key green" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">N</text>
+    <text class="text-sub" x="870" y="50" fill="black">prev (find)</text>
+    
+    <rect class="key green" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">M</text>
+    <text class="text-sub" x="1040" y="50" fill="black">screen mid1</text>
+    
+    <rect class="key orange" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">&lt;</text>
+    <text class="text-sub" x="1210" y="50" fill="black">un-indent</text>
+    
+    <rect class="key orange" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">&gt;</text>
+    <text class="text-sub" x="1380" y="50" fill="black">indent</text>
+    
+    <rect class="key green" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">?</text>
+    <text class="text-sub" x="1550" y="50" fill="black">find (rev.)</text>
+    
+    <rect class="key green" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">|</text>
+    <text class="text-sub" x="1720" y="50" fill="black">bol/goto col</text>
+  </g>
+  
+  <!-- ZXCV Lower -->
+  <g transform="translate(50, 590)">
+    <rect class="key red" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">z</text>
+    <text class="text-sub" x="20" y="50" fill="black">extra cmds</text>
+    
+    <rect class="key yellow" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">x</text>
+    <text class="text-sub" x="190" y="50" fill="black">delete char</text>
+    
+    <rect class="key orange" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">c</text>
+    <text class="text-sub" x="360" y="50" fill="black">change</text>
+    
+    <rect class="key blue" x="510" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="530" y="30" fill="black">v</text>
+    <text class="text-sub" x="530" y="50" fill="black">visual mode</text>
+    
+    <rect class="key green" x="680" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="700" y="30" fill="black">b</text>
+    <text class="text-sub" x="700" y="50" fill="black">prev word</text>
+    
+    <rect class="key green" x="850" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="870" y="30" fill="black">n</text>
+    <text class="text-sub" x="870" y="50" fill="black">next (find)</text>
+    
+    <rect class="key green" x="1020" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1040" y="30" fill="black">m</text>
+    <text class="text-sub" x="1040" y="50" fill="black">set mark</text>
+    
+    <rect class="key green" x="1190" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1210" y="30" fill="black">,</text>
+    <text class="text-sub" x="1210" y="50" fill="black">reversed f/t/F/T</text>
+    
+    <rect class="key yellow" x="1360" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1380" y="30" fill="black">.</text>
+    <text class="text-sub" x="1380" y="50" fill="black">repeat cmd</text>
+    
+    <rect class="key green" x="1530" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1550" y="30" fill="black">/</text>
+    <text class="text-sub" x="1550" y="50" fill="black">find</text>
+    
+    <rect class="key grey" x="1700" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1720" y="30" fill="black">`</text>
+    <text class="text-sub" x="1720" y="50" fill="black">not used!</text>
+  </g>
+  
+  <!-- Bottom -->
+  <g transform="translate(50, 670)">
+    <rect class="key green" x="0" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="20" y="30" fill="black">{</text>
+    <text class="text-sub" x="20" y="50" fill="black">begin parag.</text>
+    
+    <rect class="key green" x="170" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="190" y="30" fill="black">}</text>
+    <text class="text-sub" x="190" y="50" fill="black">end parag.</text>
+    
+    <rect class="key yellow" x="340" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="360" y="30" fill="black">~</text>
+    <text class="text-sub" x="360" y="50" fill="black">toggle case</text>
+    
+    <rect class="key yellow" x="510" y="0" width="200" height="60" rx="8"/>
+    <text class="text-main" x="550" y="40" fill="black">ESC - normal mode</text>
+    
+    <rect class="key green" x="720" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="740" y="30" fill="black">[</text>
+    <text class="text-sub" x="740" y="50" fill="black">misc</text>
+    
+    <rect class="key green" x="890" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="910" y="30" fill="black">]</text>
+    <text class="text-sub" x="910" y="50" fill="black">misc</text>
+    
+    <rect class="key green" x="1060" y="0" width="160" height="60" rx="8"/>
+    <text class="text-main" x="1080" y="30" fill="black">\</text>
+    <text class="text-sub" x="1080" y="50" fill="black">goto mark</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 760)">
+    <rect fill="#ff9933" x="0" y="0" width="30" height="30" rx="4" stroke="black" stroke-width="1"/>
+    <text class="text-small" x="40" y="20" fill="black">operator - requires motion afterwards, operates between cursor &amp; destination</text>
+    
+    <rect fill="#99cc66" x="700" y="0" width="30" height="30" rx="4" stroke="black" stroke-width="1"/>
+    <text class="text-small" x="740" y="20" fill="black">motion - moves cursor or defines range for operator</text>
+    
+    <rect fill="#ffff66" x="0" y="40" width="30" height="30" rx="4" stroke="black" stroke-width="1"/>
+    <text class="text-small" x="40" y="60" fill="black">command - direct action, if red enters insert mode</text>
+    
+    <rect fill="#6699ff" x="700" y="40" width="30" height="30" rx="4" stroke="black" stroke-width="1"/>
+    <text class="text-small" x="740" y="60" fill="black">visual mode commands</text>
+  </g>
+</svg>
