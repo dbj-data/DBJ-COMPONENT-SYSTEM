@@ -87,8 +87,8 @@ DBJ_EXTERN_C_BEGIN
 // DBJ String names predefined like this can clash and will clash
 // in larger projects with other libraries that define similar constructs
 // thus we will define here few probably most common
-// this will make users use these as commion names
-// and avoid name clashes
+// this will make users use these as common names
+// and avoid  inter user name clashes
 typedef DBJ_STRING_TYPE(1024) dbj_string_1024;
 typedef DBJ_STRING_TYPE(512) dbj_string_512;
 typedef DBJ_STRING_TYPE(256) dbj_string_256;
